@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Compass</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sparkles"></div>
+
+    <select id="ui-language" onchange="changeUILanguage()">
+          <option value="en">English</option>
+          <option value="ko">한국어</option>
+        </select>
+    
+     <main id="search-screen" class="container">
+      <section class="hero">
+        <h1 id="title">Compass</h1>
+        <p id="subtitle" class="subtitle">
+          Tell us what you want to learn. We help you find the course that
+          actually fits you.
+        </p>
+      </section>
+
+       <section class="search-panel">
+        <label id="topic-label">What do you want to learn?</label>
+        <input
+          type="text"
+          id="topic"
+          placeholder="What topic do you want to study?"
+        />
+
+        <div class="filters">
+          <div>
+            <label id="level-label">Your level</label>
+            <select id="level">
+              <option value="any" id="level-any">Any level</option>
+              <option value="beginner" id="level-beginner">Beginner</option>
+              <option value="intermediate" id="level-intermediate">Intermediate</option>
+              <option value="advanced" id="level-advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div>
+            <label id="goal-label">Your goal</label>
+            <select id="goal">
+              <option value="any" id="goal-any">Any goal</option>
+              <option value="school" id="goal-school">School support</option>
+              <option value="project" id="goal-project">Build projects</option>
+              <option value="job" id="goal-job">Career / job</option>
+            </select>
+          </div>
+
+          <div>
+            <label id="budget-label">Budget</label>
+            <select id="budget">
+              <option value="any" id="budget-any">Any budget</option>
+              <option value="free" id="budget-free">Free</option>
+              <option value="paid" id="budget-paid">Paid</option>
+            </select>
+          </div>
+
+           <div>
+            <label id="language-label">Language</label>
+            <select id="language">
+              <option value="any" id="language-any">Any language</option>
+              <option value="English" id="language-english">English</option>
+              <option value="Korean" id="language-korean">Korean</option>
+            </select>
+          </div>
+        </div>
+
+        <p id="cta-text" class="cta-text">Find the course that fits your way of learning.</p>
+        <button id="search-button" onclick="searchCourse()">Compass</button>
+      </section>
+    </main>
+
+    <section id="loading-screen" class="loading-screen hidden">
+      <div class="big-spinner"></div>
+      <h2 id="loading-title">Finding your best courses...</h2>
+      <p id="loading-text">Please wait while Compass matches your learning needs.</p>
+    </section>
+
+   <section id="results-screen" class="results-screen hidden">
+      <h2 id="results-title">Recommended courses</h2>
+      <div id="result" class="results"></div>
+      <button id="back-button" onclick="goBack()">Compass again</button>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
