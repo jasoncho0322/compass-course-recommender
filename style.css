@@ -1,0 +1,574 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: #0f1117;
+  color: #f9fafb;
+  position: relative;
+  display: flex;
+  justify-content: center;   
+  align-items: flex-start;      
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1400px;
+  height: 1200px;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 235, 180, 0.35) 0%,
+    rgba(255, 220, 150, 0.18) 30%,
+    rgba(255, 200, 120, 0.08) 55%,
+    rgba(255, 180, 100, 0.03) 75%,
+    transparent 100%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 700px;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 240, 200, 0.25) 0%,
+    rgba(255, 220, 160, 0.12) 40%,
+    transparent 80%
+  );
+  filter: blur(25px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 24px;
+  padding-top: 110px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px; 
+}
+
+h1 {
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  margin: 0;
+  line-height: 1.1;
+  color: #111827;
+}
+
+.subtitle {
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.search-panel {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 32px;
+  border-radius: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e7e5e4;
+  border-radius: 14px;
+  font-size: 15px;
+  background: #f6f5f3;
+  color: #111827;
+  outline: none;
+}
+
+input::placeholder {
+  color: #9ca3af; 
+}
+
+input:focus,
+select:focus {
+  border-color: #6b7280;
+  box-shadow: none;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.cta-text {
+  margin: 24px 0 0;
+  text-align: center;
+  color: #9a9899;
+  font-size: 14px;
+}
+
+button {
+  font-family: inherit;
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #000000;
+}
+
+.results {
+  margin-top: 28px;
+}
+
+.course-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  margin: 18px 0;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideDown 1s ease forwards;
+}
+
+.course-card h3 {
+  font-family: inherit;
+  margin: 0 0 12px;
+  font-size: 22px;
+  color: #111827;
+}
+
+.course-card p {
+  margin: 8px 0;
+  color: #4b5563;
+}
+
+.course-card a {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 11px 15px;
+  border-radius: 10px;
+  background: #111827;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.loading-screen,
+.results-screen {
+  min-height: 100vh;
+  padding: 72px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-screen h2,
+.results-screen h2 {
+  margin: 24px 0 8px;
+  font-size: 32px;
+  color: #111827;
+}
+
+.loading-screen p {
+  color: #4b5563;
+  font-size: 15px;
+}
+
+.big-spinner {
+  width: 56px;
+  height: 56px;
+  border: 5px solid #e5e7eb;
+  border-top: 5px solid #111827;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.results-screen {
+  max-width: 720px;
+  margin: 0 auto;
+  justify-content: flex-start;
+  padding-top: 120px;
+}
+
+.results-screen button {
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f9fafb;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.results-screen button:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container,
+.loading-screen,
+.results-screen {
+  position: relative;
+  z-index: 1;
+}
+
+h1,
+.loading-screen h2,
+.results-screen h2 {
+  color: #f9fafb;
+}
+
+.subtitle,
+.cta-text,
+.loading-screen p {
+  color: #92959b;
+}
+
+.sparkles {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 460px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.72;
+
+  background:
+    radial-gradient(circle at 16% 52%, rgba(255,240,200,0.18) 0 0.6px, transparent 1.8px),
+    radial-gradient(circle at 23% 67%, rgba(255,255,255,0.28) 0 0.8px, transparent 2px),
+    radial-gradient(circle at 31% 43%, rgba(255,225,160,0.24) 0 0.7px, transparent 1.9px),
+    radial-gradient(circle at 37% 78%, rgba(255,255,255,0.22) 0 0.7px, transparent 2px),
+    radial-gradient(circle at 46% 58%, rgba(255,240,200,0.32) 0 0.9px, transparent 2.1px),
+    radial-gradient(circle at 53% 34%, rgba(255,255,255,0.24) 0 0.7px, transparent 1.9px),
+    radial-gradient(circle at 61% 72%, rgba(255,225,160,0.26) 0 0.8px, transparent 2px),
+    radial-gradient(circle at 69% 49%, rgba(255,255,255,0.3) 0 0.8px, transparent 2px),
+    radial-gradient(circle at 78% 63%, rgba(255,240,200,0.2) 0 0.7px, transparent 1.9px),
+    radial-gradient(circle at 86% 41%, rgba(255,255,255,0.16) 0 0.6px, transparent 1.8px);
+
+  animation: sparkleNatural 18s ease-in-out infinite alternate;
+}
+
+.sparkles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at 19% 76%, rgba(255,255,255,0.16) 0 0.5px, transparent 1.7px),
+    radial-gradient(circle at 28% 56%, rgba(255,240,200,0.14) 0 0.5px, transparent 1.7px),
+    radial-gradient(circle at 35% 88%, rgba(255,255,255,0.12) 0 0.45px, transparent 1.6px),
+    radial-gradient(circle at 44% 69%, rgba(255,225,160,0.14) 0 0.5px, transparent 1.7px),
+    radial-gradient(circle at 58% 82%, rgba(255,255,255,0.14) 0 0.5px, transparent 1.7px),
+    radial-gradient(circle at 72% 74%, rgba(255,240,200,0.13) 0 0.45px, transparent 1.6px),
+    radial-gradient(circle at 83% 58%, rgba(255,255,255,0.15) 0 0.5px, transparent 1.7px);
+
+  opacity: 0.85;
+  animation: sparkleSoft 22s ease-in-out infinite alternate;
+}
+
+@keyframes sparkleNatural {
+  0% {
+    opacity: 0.45;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  100% {
+    opacity: 0.72;
+    transform: translateX(-50%) translateY(2px);
+  }
+}
+
+@keyframes sparkleSoft {
+  0% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+}
+
+.result-card {
+  padding: 26px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.match-badge {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.match-score {
+  font-size: 13px;
+  font-weight: 700;
+  color: #d1b97a;
+  background: rgba(255, 235, 180, 0.2);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.course-meta span {
+  font-size: 13px;
+  color: #374151;
+  background: #f3f4f6;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.course-feature {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.course-reason {
+  margin-top: 14px;
+  color: #111827 !important;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.result-card:first-child {
+  border: 2px solid #e5d6a8;
+  box-shadow:
+    0 0 6px rgba(229, 214, 168, 0.4),
+    0 0 0 1px rgba(229, 214, 168, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.result-card:first-child .match-badge {
+  color: #dab65b;
+}
+
+.result-card:first-child .match-score {
+  background: #f7efd8;
+  color: #8a6f2a;
+}
+
+.course-card a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+#ui-language {
+  position: fixed;   
+  top: 24px;         
+  right: 32px;       
+
+  width: auto;
+  min-width: 120px;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: #f9fafb;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(10px); 
+  z-index: 10;                 
+
+  cursor: pointer;
+}
+
+#ui-language option {
+  color: #111827;
+  background: #ffffff;
+}
+
+@media (max-width: 640px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+    padding: 44px 18px 24px;
+  }
+
+  .hero {
+    margin-bottom: 22px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.45;
+    padding: 0 10px;
+  }
+
+  .search-panel {
+    width: 100%;
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  label {
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  input,
+  select {
+    padding: 11px 13px;
+    font-size: 14px;
+    border-radius: 14px;
+  }
+
+  .filters {
+    gap: 12px;
+  }
+
+  .cta-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  button {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .results-screen {
+    width: 100%;
+    max-width: none;
+    padding: 52px 18px 32px;
+  }
+
+  .results-screen button {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.18); 
+    color: #f9fafb;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+  }
+
+  .results-screen button:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .results-screen h2 {
+    font-size: 32px;
+    line-height: 1.15;
+    margin-bottom: 22px;
+  }
+
+  .course-card {
+    padding: 18px;
+    margin: 14px 0;
+    border-radius: 20px;
+  }
+
+  .course-card h3 {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .course-meta span {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .course-feature,
+  .course-reason {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .course-card a {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .match-score {
+    font-size: 12px;
+    padding: 5px 9px;
+  }
+
+  #ui-language {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    min-width: 92px;
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+}
