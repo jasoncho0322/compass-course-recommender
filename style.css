@@ -441,22 +441,96 @@ h1,
 }
 
 @media (max-width: 640px) {
+  body {
+    align-items: flex-start;
+  }
+
   .container {
-    padding: 52px 18px;
+    width: 100%;
+    max-width: none;
+    padding: 72px 14px 32px;
+  }
+
+  .hero {
+    margin-bottom: 24px;
   }
 
   h1 {
-    font-size: 44px;
+    font-size: 42px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 6px;
   }
 
   .search-panel {
-    padding: 24px;
+    width: 100%;
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  input,
+  select {
+    padding: 15px 16px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .results-screen {
+    width: 100%;
+    max-width: none;
+    padding: 72px 14px 32px;
+  }
+
+  .results-screen h2 {
+    font-size: 36px;
+    margin-bottom: 28px;
+  }
+
+  .course-card {
+    padding: 22px;
+    margin: 16px 0;
+    border-radius: 20px;
+  }
+
+  .course-card h3 {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  .course-meta {
+    gap: 8px;
+  }
+
+  .course-meta span {
+    font-size: 14px;
+    padding: 7px 11px;
+  }
+
+  .course-feature,
+  .course-reason {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .course-card a {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    font-size: 16px;
   }
 
   #ui-language {
-    top: 16px;
-    right: 16px;
+    top: 14px;
+    right: 14px;
+    min-width: 96px;
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 7px 10px;
   }
 }
