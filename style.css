@@ -500,22 +500,23 @@ h1,
   .results-screen {
     width: 100%;
     max-width: none;
-    padding: 64px 18px 32px;
+    padding: 52px 18px 32px;
   }
 
   .results-screen h2 {
-    font-size: 34px;
-    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 1.15;
+    margin-bottom: 22px;
   }
 
   .course-card {
-    padding: 20px;
-    margin: 16px 0;
+    padding: 18px;
+    margin: 14px 0;
     border-radius: 20px;
   }
 
   .course-card h3 {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.25;
   }
 
@@ -526,15 +527,20 @@ h1,
 
   .course-feature,
   .course-reason {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .course-card a {
     width: 100%;
     text-align: center;
-    padding: 13px;
-    font-size: 15px;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .match-score {
+    font-size: 12px;
+    padding: 5px 9px;
   }
 
   #ui-language {
