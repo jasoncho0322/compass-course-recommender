@@ -34,11 +34,11 @@ Tech Stack
 - GitHub Pages (deployment)
   
 
-Why I Built This
+Why I Built This: 
 I wanted to create a simple but practical tool that helps people choose online courses more effectively.
 Instead of just listing courses, Compass focuses on **personalized recommendations with clear reasoning**, improving user decision-making.
 
-Screenshots
+Screenshots: 
 (Add screenshots here later)
 
 Future Improvements
@@ -47,5 +47,5 @@ Future Improvements
 - More advanced ranking algorithm
 - UI animation enhancements
 
-Feedback
+Feedback: 
 Feel free to try it and share feedback!
