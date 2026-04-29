@@ -544,8 +544,9 @@ h1,
   }
 
   #ui-language {
+    position: absolute;
     top: 14px;
-    right: 14px;
+    right: 18px;
     min-width: 92px;
     font-size: 12px;
     padding: 7px 10px;
