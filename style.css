@@ -448,7 +448,7 @@ h1,
   .container {
     width: 100%;
     max-width: none;
-    padding: 56px 18px 28px;
+    padding: 44px 18px 24px;
   }
 
   .hero {
@@ -456,7 +456,7 @@ h1,
   }
 
   h1 {
-    font-size: 38px;
+    font-size: 32px;
   }
 
   .subtitle {
@@ -467,23 +467,24 @@ h1,
 
   .search-panel {
     width: 100%;
-    padding: 20px;
+    padding: 16px;
     border-radius: 22px;
   }
 
   label {
+    margin-bottom: 6px;
     font-size: 14px;
   }
 
   input,
   select {
-    padding: 13px 14px;
-    font-size: 15px;
+    padding: 11px 13px;
+    font-size: 14px;
     border-radius: 14px;
   }
 
   .filters {
-    gap: 14px;
+    gap: 12px;
   }
 
   .cta-text {
