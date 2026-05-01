@@ -597,81 +597,6 @@ const courses = [
 }
 ];
 
-function generateReason(course, userInput) {
-  let reasons = [];
-
-  if (currentUILanguage === "ko") {
-    if (course.level === userInput.level) {
-      reasons.push("현재 수준에 맞고");
-    }
-
-    if (course.goal === userInput.goal) {
-      reasons.push("학습 목표에 적합하며");
-    }
-
-    if (course.language === userInput.language) {
-      reasons.push("선호하는 언어로 제공되고");
-    }
-
-    if (course.priceType === userInput.priceType) {
-      reasons.push("예산 조건에도 맞으며");
-    }
-
-    if (course.hasProject) {
-      reasons.push("실습 프로젝트가 포함되어 있고");
-    }
-
-    if (course.duration === "short") {
-      reasons.push("짧은 시간 안에 수강 가능합니다");
-    }
-
-    if (reasons.length === 0) {
-      return "이 강의는 관심 주제와 관련된 추천 강의입니다.";
-    }
-
-    return "이 강의는 " + reasons.join(" ") + ".";
-  }
-
-
-  if (course.level === userInput.level) {
-    reasons.push("matches your level");
-  }
-
-  if (course.goal === userInput.goal) {
-    reasons.push("fits your goal");
-  }
-
-  if (course.language === userInput.language) {
-    reasons.push("available in your preferred language");
-  }
-
-  if (course.priceType === userInput.priceType) {
-    reasons.push("fits your budget");
-  }
-
-  if (course.hasProject) {
-    reasons.push("includes hands-on projects");
-  }
-
-  if (course.duration === "short") {
-    reasons.push("quick to complete");
-  }
-
-  if (reasons.length === 0) {
-    return "This course is still a relevant option based on your interest.";
-  }
-
-  return "This course " + reasons.join(", ") + ".";
-}
-
-function getMatchLabel(score) {
-  const t = translations[currentUILanguage];
-
-  if (score >= 8) return t.bestMatch;
-  if (score >= 6) return t.goodMatch;
-  return t.possibleMatch;
-}
-
 function searchCourse() {
   const rawTopic = document.getElementById("topic").value.toLowerCase().trim();
   const topic = topicMap[rawTopic] || rawTopic;
@@ -685,7 +610,6 @@ function searchCourse() {
   const searchScreen = document.getElementById("search-screen");
   const loadingScreen = document.getElementById("loading-screen");
   const resultsScreen = document.getElementById("results-screen");
-  const result = document.getElementById("result");
 
   if (topic === "") {
     alert(translations[currentUILanguage].topicAlert);
@@ -786,7 +710,7 @@ function renderResults(recommended, userInput) {
 
   recommended.slice(0, 3).forEach((course, index) => {
     result.innerHTML += `
-      <div class="course-card result-card" style="animation-delay: ${index * 0.35}s">
+      <div class="course-card result-card" style="animation-delay: ${index * 0.6}s">
         <div class="card-top">
           <span class="match-badge">${getMatchLabel(course.score)}</span>
           <span class="match-score">${course.score}/10</span>
@@ -817,6 +741,14 @@ function renderResults(recommended, userInput) {
   });
 }
 
+function getMatchLabel(score) {
+  const t = translations[currentUILanguage];
+
+  if (score >= 8) return t.bestMatch;
+  if (score >= 6) return t.goodMatch;
+  return t.possibleMatch;
+}
+
 function getLevelText(level) {
   if (currentUILanguage === "ko") {
     if (level === "beginner") return "입문";
@@ -831,4 +763,71 @@ function getPriceText(price) {
     if (price === "Free") return "무료";
   }
   return price;
+}
+
+function generateReason(course, userInput) {
+  let reasons = [];
+
+  if (currentUILanguage === "ko") {
+    if (course.level === userInput.level) {
+      reasons.push("현재 수준에 맞고");
+    }
+
+    if (course.goal === userInput.goal) {
+      reasons.push("학습 목표에 적합하며");
+    }
+
+    if (course.language === userInput.language) {
+      reasons.push("선호하는 언어로 제공되고");
+    }
+
+    if (course.priceType === userInput.priceType) {
+      reasons.push("예산 조건에도 맞으며");
+    }
+
+    if (course.hasProject) {
+      reasons.push("실습 프로젝트가 포함되어 있고");
+    }
+
+    if (course.duration === "short") {
+      reasons.push("짧은 시간 안에 수강 가능합니다");
+    }
+
+    if (reasons.length === 0) {
+      return "이 강의는 관심 주제와 관련된 추천 강의입니다.";
+    }
+
+    return "이 강의는 " + reasons.join(" ") + ".";
+  }
+
+
+  if (course.level === userInput.level) {
+    reasons.push("matches your level");
+  }
+
+  if (course.goal === userInput.goal) {
+    reasons.push("fits your goal");
+  }
+
+  if (course.language === userInput.language) {
+    reasons.push("available in your preferred language");
+  }
+
+  if (course.priceType === userInput.priceType) {
+    reasons.push("fits your budget");
+  }
+
+  if (course.hasProject) {
+    reasons.push("includes hands-on projects");
+  }
+
+  if (course.duration === "short") {
+    reasons.push("quick to complete");
+  }
+
+  if (reasons.length === 0) {
+    return "This course is still a relevant option based on your interest.";
+  }
+
+  return "This course " + reasons.join(", ") + ".";
 }
