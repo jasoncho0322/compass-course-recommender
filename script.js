@@ -659,7 +659,7 @@ function changeUILanguage() {
   currentUILanguage = document.getElementById("ui-language").value;
   const t = translations[currentUILanguage];
 
-  document.getElementById("title").textContent = "Compass";
+  document.getElementById("title-text").textContent = "Compass";
   document.getElementById("subtitle").textContent = t.subtitle;
   document.getElementById("topic-label").textContent = t.topicLabel;
   document.getElementById("topic").placeholder = t.topicPlaceholder;

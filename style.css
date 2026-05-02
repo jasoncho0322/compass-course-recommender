@@ -24,10 +24,10 @@ body::before {
   height: 1200px;
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(255, 235, 180, 0.35) 0%,
-    rgba(255, 220, 150, 0.18) 30%,
-    rgba(255, 200, 120, 0.08) 55%,
-    rgba(255, 180, 100, 0.03) 75%,
+    rgba(108, 99, 255, 0.22) 0%,
+    rgba(90, 75, 220, 0.11) 32%,
+    rgba(70, 60, 160, 0.05) 55%,
+    rgba(40, 35, 100, 0.03) 75%,
     transparent 100%
   );
   filter: blur(40px);
@@ -45,8 +45,8 @@ body::after {
   height: 700px;
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(255, 240, 200, 0.25) 0%,
-    rgba(255, 220, 160, 0.12) 40%,
+    rgba(130, 110, 255, 0.18) 0%,
+    rgba(85, 75, 200, 0.10) 40%,
     transparent 80%
   );
   filter: blur(25px);
@@ -122,6 +122,20 @@ h1 {
   color: #f9fafb;
 }
 
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.inline-logo {
+  width: 56px;
+  height: 56px;
+  transform: translateY(-3px);
+  filter: brightness(1.15) drop-shadow(0 0 3px rgba(120, 100, 255, 0.2));
+}
+
 .subtitle {
   color: #92959b;
   font-size: 16px;
@@ -129,11 +143,11 @@ h1 {
 }
 
 .search-panel {
-  background: #ffffff;
+  background: #f8f9fb;
   border: 1px solid #e5e7eb;
   padding: 32px;
   border-radius: 22px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 label {
@@ -187,7 +201,7 @@ button {
   padding: 14px;
   border: none;
   border-radius: 10px;
-  background: #111827;
+  background: linear-gradient(135deg, #0b1f3a, #312e81);
   color: #ffffff;
   font-size: 15px;
   font-weight: 600;
@@ -196,7 +210,7 @@ button {
 }
 
 button:hover {
-  background: #000000;
+  background: linear-gradient(135deg, #102a4f, #4338ca);
 }
 
 .loading-screen,
@@ -256,7 +270,7 @@ button:hover {
 }
 
 .course-card {
-  background: #ffffff;
+  background: #f8f9fb;
   border: 1px solid #e5e7eb;
   padding: 26px;
   margin: 18px 0;
@@ -346,11 +360,10 @@ button:hover {
 }
 
 .result-card:first-child {
-  border: 2px solid #e5d6a8;
+  border: 1px solid #6C63FF;
   box-shadow:
-    0 0 6px rgba(229, 214, 168, 0.4),
-    0 0 0 1px rgba(229, 214, 168, 0.2),
-    0 8px 24px rgba(0, 0, 0, 0.08);
+    0 0 12px rgba(108, 99, 255, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .result-card:first-child .match-badge {
@@ -442,6 +455,16 @@ button:hover {
 
   h1 {
     font-size: 32px;
+  }
+
+  #title {
+    gap: 10px;
+  }
+
+  .inline-logo {
+    width: 36px;
+    height: 36px;
+    transform: translateY(-2px);
   }
 
   .subtitle {
