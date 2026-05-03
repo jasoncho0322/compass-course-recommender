@@ -708,9 +708,40 @@ function renderResults(recommended, userInput) {
     return;
   }
 
-  recommended.slice(0, 3).forEach((course, index) => {
+  renderCards(recommended.slice(0, 1), userInput, result, 0, true);
+
+     if (recommended.length > 1) {
     result.innerHTML += `
-      <div class="course-card result-card" style="animation-delay: ${index * 0.6}s">
+      <button id="show-more-btn" onclick="showMore()" aria-label="Show more courses">
+        ↓
+      </button>
+      <div id="more-results"></div>
+    `;
+  }
+}
+
+function showMore() {
+  const moreResults = document.getElementById("more-results");
+  const showMoreBtn = document.getElementById("show-more-btn");
+
+  showMoreBtn.remove();
+
+  renderCards(
+    lastRecommended.slice(1),
+    lastUserInput,
+    moreResults,
+    1,
+    false
+  );
+}
+
+function renderCards(list, userInput, container, startIndex = 0, isBest = false) {
+   list. forEach((course, index) => {
+    const cardClass = isBest && index === 0 ? "course-card best-card" : "course-card";
+
+
+    container.innerHTML += `
+      <div class="${cardClass}" style="animation-delay: ${(startIndex + index) * 0.6}s">
         <div class="card-top">
           <span class="match-badge">${getMatchLabel(course.score)}</span>
           <span class="match-score">${course.score}/10</span>

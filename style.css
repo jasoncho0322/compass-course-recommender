@@ -133,7 +133,6 @@ h1 {
   width: 56px;
   height: 56px;
   transform: translateY(-3px);
-  filter: brightness(1.15) drop-shadow(0 0 3px rgba(120, 100, 255, 0.2));
 }
 
 .subtitle {
@@ -226,10 +225,18 @@ button:hover {
 }
 
 .results-screen {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-between;  
+
   max-width: 720px;
   margin: 0 auto;
-  justify-content: flex-start;
-  padding-top: 120px;
+
+  padding: 80px 24px 40px; 
 }
 
 .loading-screen h2,
@@ -254,11 +261,16 @@ button:hover {
 }
 
 .results {
+  width: 100%;
   margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .results-screen button {
   max-width: 420px;
+  margin-top: 60px;
   background: rgba(255, 255, 255, 0.12);
   color: #f9fafb;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -269,7 +281,59 @@ button:hover {
   background: rgba(255, 255, 255, 0.18);
 }
 
+.best-card {
+  width: 100%;
+  max-width: 640px;
+  border: 1px solid #6C63FF;
+  box-shadow:
+    0 0 12px rgba(108, 99, 255, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.best-card .match-badge {
+  color: #dab65b;
+}
+
+.best-card .match-score {
+  background: #f7efd8;
+  color: #8a6f2a;
+}
+
+#show-more-btn {
+  width: 42px;
+  height: 42px;
+  margin-top: 6px;
+  padding: 0;
+  border-radius: 999px;
+  opacity: 0.5;
+
+  background: transparent;
+  color: #f9fafb;
+  border: none;
+  box-shadow: none;
+
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+#show-more-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(2px);
+  opacity: 0.9;
+}
+
+#more-results {
+  width: 100%;
+  max-width: 640px;
+  margin-top: 16px;
+}
+
 .course-card {
+  width: 100%;
+  max-width: 640px;
+
   background: #f8f9fb;
   border: 1px solid #e5e7eb;
   padding: 26px;
@@ -357,22 +421,6 @@ button:hover {
   color: #111827 !important;
   font-weight: 500;
   line-height: 1.6;
-}
-
-.result-card:first-child {
-  border: 1px solid #6C63FF;
-  box-shadow:
-    0 0 12px rgba(108, 99, 255, 0.4),
-    0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.result-card:first-child .match-badge {
-  color: #dab65b;
-}
-
-.result-card:first-child .match-score {
-  background: #f7efd8;
-  color: #8a6f2a;
 }
 
 #ui-language {
@@ -464,7 +512,7 @@ button:hover {
   .inline-logo {
     width: 36px;
     height: 36px;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
   }
 
   .subtitle {
@@ -506,21 +554,37 @@ button:hover {
   }
 
   .results-screen {
-    width: 100%;
-    max-width: none;
-    padding: 52px 18px 32px;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  padding: 52px 18px 28px;
+
+  justify-content: space-between;
   }
 
-  .results-screen button {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.18); 
-    color: #f9fafb;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
+  #back-button {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.18); 
+  color: #f9fafb;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
   }
 
-  .results-screen button:hover {
-    background: rgba(255, 255, 255, 0.25);
+  #back-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  } 
+
+  #show-more-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  margin-top: 6px;
+
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: none;
   }
 
   .results-screen h2 {
